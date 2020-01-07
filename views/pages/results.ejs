@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <title>Results</title>
+</head>
+<body>   
+    
+    <!--This script will change the URL string to remove client id information and provide a cleaner URL-->
+    <script> 
+        var originalUrl = 'results'; 
+        history.pushState(originalUrl, "results", "results"); 
+    </script>
+    <form action="/login" method="GET">       
+        <h3>Your top played artists of all time</h3>
+        <ol>
+            <% top_played_artists.forEach(function(top_played_artists) { %>
+                <li><%= top_played_artists%></li>
+           <% }); %>
+        </ol>
+        <br>
+        <h3>Your top played songs of all time</h3>
+        <ol>
+            <% top_played_tracks.forEach(function(top_played_tracks) { %>
+                <li><%= top_played_tracks%></li>
+           <% }); %>
+        </ol>
+        <h3>Your top played songs over the past 4 weeks</h3>
+        <ol>
+            <% top_recently_played_tracks.forEach(function(top_recently_played_tracks) { %>
+                <li><%= top_recently_played_tracks%></li>
+           <% }); %>
+        </ol>
+
+        
+    </form>    
+</body>
+</html>
+
+
+
+
+

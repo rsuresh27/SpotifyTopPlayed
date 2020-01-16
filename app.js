@@ -87,8 +87,11 @@ app.get('/results', function (req, res) {
     info.push(top_tracks);
     return tracks('short_term');
   }).then(function (top_recent_tracks) {
-    info.push(top_recent_tracks)
-    return info;
+    info.push(top_recent_tracks); 
+    return artist("short_term");
+  }).then(function(top_recent_artists) {
+    info.push(top_recent_artists); 
+    return info; 
   }).then(function (info) {//at the end we will receive a 2D array of users top played artists, top played tracks, and recent top played tracks 
 
     var top_played_artists = info[0];
@@ -96,6 +99,8 @@ app.get('/results', function (req, res) {
     var top_played_tracks = info[1];
 
     var top_recently_played_tracks = info[2];
+
+    var top_recently_played_artists = info[3]; 
 
     if (!req.cookies.a_t) { //if this cookies does not exist, we need to create it     
 
@@ -107,7 +112,8 @@ app.get('/results', function (req, res) {
     res.render('/Spotify/views/pages/results.ejs', {//here we must pass the necessary parameters to theh ejs view 
       top_played_artists: top_played_artists,
       top_played_tracks: top_played_tracks,
-      top_recently_played_tracks: top_recently_played_tracks
+      top_recently_played_tracks: top_recently_played_tracks, 
+      top_recently_played_artists: top_recently_played_artists
     })
 
   }).catch(function (error) {

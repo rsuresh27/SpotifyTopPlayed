@@ -33,8 +33,12 @@
                 <li><%= top_recently_played_tracks%></li>
            <% }); %>
         </ol>
-
-        
+        <h3>Your top played artists over the past 4 weeks</h3>
+        <ol>
+            <% top_recently_played_artists.forEach(function(top_played_artists) { %>
+                <li><%= top_played_artists%></li>
+            <% }); %>
+        </ol>        
     </form>    
 </body>
 </html>

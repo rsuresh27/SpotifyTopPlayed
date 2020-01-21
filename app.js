@@ -34,7 +34,7 @@ const key = process.env.key;
 
 const iv = process.env.iv; 
 
-app.use(express.static(__dirname + '/public'));
+app.use('/static',express.static(__dirname + '/public'));
 
 
 app.listen(3003, function (req, res, error) {
@@ -49,7 +49,9 @@ app.listen(3003, function (req, res, error) {
 
 app.get('/home', function (req, res) {  
 
+
   res.render('/Spotify/views/pages/index.ejs');
+  return; 
 
 })
 
@@ -295,9 +297,9 @@ app.get('/results', function (req, res) {
 
 })
 
-app.get('*', function (req, res) { //if any another page is requested by the user not listed above in the app.get routes, we will redirect the user to an error page
+/*app.get('*', function (req, res) { //if any another page is requested by the user not listed above in the app.get routes, we will redirect the user to an error page
 
   //404 error page   
   res.render('/Spotify/views/pages/notfound.ejs');  
   return;
-})
+})*/
